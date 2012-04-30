@@ -132,6 +132,10 @@ Altreus, C<< <altreus at cpan.org> >>
 
 =head1 BUGS
 
+I'll be amazed if this works for you at all.
+
+Bugs and requests to github please -
+https://github.com/Altreus/Catalyst-Authentication-Store-MongoDB/issues
 
 =head1 SUPPORT
 
