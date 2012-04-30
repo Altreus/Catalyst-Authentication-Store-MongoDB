@@ -9,7 +9,7 @@ WriteMakefile(
     VERSION_FROM        => 'lib/Catalyst/Authentication/Store/MongoDB.pm',
     ABSTRACT_FROM       => 'lib/Catalyst/Authentication/Store/MongoDB.pm',
     ($ExtUtils::MakeMaker::VERSION >= 6.3002
-      ? ('LICENSE'=> 'perl')
+      ? ('LICENSE'=> 'MIT')
       : ()),
     PL_FILES            => {},
     PREREQ_PM => {
