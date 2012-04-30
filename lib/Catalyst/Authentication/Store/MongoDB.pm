@@ -17,7 +17,6 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
 This module links a subclass of MongoDB to your Catalyst application as a user
@@ -32,6 +31,7 @@ store for the Authentication plugin.
             <store>
                 class MongoDB
                 user_collection user
+                user_class Catalyst::Authentication::User::Hash
                 model MongoDB
                 database db
             </store>
@@ -58,6 +58,11 @@ store in the first place.
 =head2 user_collection
 
 The collection in your database that holds users.
+
+=head2 user_class
+
+Some subclass of Catalyst::Authentication::User to bless the returned objects
+as.
 
 =head2 model
 
@@ -127,55 +132,21 @@ Altreus, C<< <altreus at cpan.org> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-catalyst-authentication-store-mongodb at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Catalyst-Authentication-Store-MongoDB>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
 
 =head1 SUPPORT
 
-You can find documentation for this module with the perldoc command.
-
-    perldoc Catalyst::Authentication::Store::MongoDB
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker (report bugs here)
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Catalyst-Authentication-Store-MongoDB>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Catalyst-Authentication-Store-MongoDB>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Catalyst-Authentication-Store-MongoDB>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Catalyst-Authentication-Store-MongoDB/>
-
-=back
-
+You are reading all the support you're likely to get.
 
 =head1 ACKNOWLEDGEMENTS
 
+Thanks to BOBTFISH for wracking his brains to try to remember how this stuff
+works.
 
 =head1 LICENSE AND COPYRIGHT
 
 Copyright 2012 Altreus.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
+MIT licence. Go nuts.
 
 
 =cut
