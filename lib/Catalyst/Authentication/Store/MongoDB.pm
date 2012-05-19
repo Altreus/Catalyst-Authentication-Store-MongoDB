@@ -94,7 +94,7 @@ sub from_session {
         ->connection
         ->get_database($self->{config}->{database})
         ->get_collection($self->{config}->{user_collection})
-        ->find({
+        ->find_one({
             _id => MongoDB::OID->new(value => $frozen)
         });
 }
@@ -114,7 +114,7 @@ sub find_user {
         ->connection
         ->get_database($self->{config}->{database})
         ->get_collection($self->{config}->{user_collection})
-        ->find($authinfo);
+        ->find_one($authinfo);
     
     return undef unless $user;
 
