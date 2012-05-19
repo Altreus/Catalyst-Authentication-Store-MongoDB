@@ -11,11 +11,11 @@ Catalyst::Plugin::Authentication
 
 =head1 VERSION
 
-Version 0.01
+Version 2e-4
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '2e-4';
 
 =head1 SYNOPSIS
 
@@ -90,10 +90,10 @@ sub new {
 sub from_session {
     my ($self, $c, $frozen) = @_;
 
-    $c->model($self->config->{model})
+    $c->model($self->{config}->{model})
         ->connection
-        ->get_database($self->config->{database})
-        ->get_collection($self->config->{user_collection})
+        ->get_database($self->{config}->{database})
+        ->get_collection($self->{config}->{user_collection})
         ->find({
             _id => MongoDB::OID->new(value => $frozen)
         });
@@ -110,20 +110,20 @@ sub find_user {
 
     # note to self before I forget: password is deleted from $authinfo by the
     # realm when finding the user. kthx
-    my $user = $c->model($self->config->{model})
+    my $user = $c->model($self->{config}->{model})
         ->connection
-        ->get_database($self->config->{database})
-        ->get_collection($self->config->{user_collection})
+        ->get_database($self->{config}->{database})
+        ->get_collection($self->{config}->{user_collection})
         ->find($authinfo);
     
     return undef unless $user;
 
-    bless $user, $self->config->{user_class};
+    bless $user, $self->{config}->{user_class};
 }
 
 sub user_supports {
     my $self = shift;
-    $self->config->{user_class}->supports( @_ );
+    $self->{config}->{user_class}->supports( @_ );
 }
 
 =head1 AUTHOR
