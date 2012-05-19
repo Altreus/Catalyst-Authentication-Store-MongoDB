@@ -90,13 +90,16 @@ sub new {
 sub from_session {
     my ($self, $c, $frozen) = @_;
 
-    $c->model($self->{config}->{model})
-        ->connection
-        ->get_database($self->{config}->{database})
-        ->get_collection($self->{config}->{user_collection})
-        ->find_one({
-            _id => MongoDB::OID->new(value => $frozen)
-        });
+    my $user = $c->model($self->{config}->{model})
+            ->connection
+            ->get_database($self->{config}->{database})
+            ->get_collection($self->{config}->{user_collection})
+            ->find_one({
+                _id => MongoDB::OID->new(value => $frozen)
+            });
+
+    bless $user, $self->{config}->{user_class} if $user;
+    return $user;
 }
 
 sub for_session {
