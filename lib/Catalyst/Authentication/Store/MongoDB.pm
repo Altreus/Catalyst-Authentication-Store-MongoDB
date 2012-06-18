@@ -11,11 +11,11 @@ Catalyst::Plugin::Authentication
 
 =head1 VERSION
 
-Version 2e-4
+Version 0.02
 
 =cut
 
-our $VERSION = '2e-4';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
