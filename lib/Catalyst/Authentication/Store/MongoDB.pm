@@ -15,7 +15,7 @@ Version 0.02
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -79,6 +79,8 @@ sub new {
     my ($class, $config, $app) = @_;
 
     $config->{user_class} //= 'Catalyst::Authentication::User::Hash';
+
+    Catalyst::Utils::ensure_class_loaded( $config->{user_class} );
 
     my $self = {
         config => $config
